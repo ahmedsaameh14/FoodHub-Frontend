@@ -36,5 +36,7 @@ export const routes: Routes = [
         {path: 'addItem/form/:id' , component: ItemFormComponent},
         {path: '' , component: dashboardHome},
         {path: '**' , redirectTo: 'dashboard/home'}
-    ]}
+    ]},
+
+    {path: '**' , redirectTo: 'home'}
 ];
