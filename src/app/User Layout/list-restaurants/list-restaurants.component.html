@@ -1,1 +1,50 @@
-<p>list-restaurants works!</p>
+<div class="container my-5">
+  <h2 class="text-center mb-4">Our Restaurants</h2>
+
+  <div class="row g-4">
+    <div *ngFor="let restaurant of restaurants" class="col-md-4 mb-4">
+      <div class="card h-100 restaurant-card shadow-sm">
+        <!-- restaurant Image with hover effect -->
+        <div class="restaurant-image-container">
+          <img [src]="'http://localhost:3000/uploads/' + restaurant.img" class="card-img-top p-3"
+            alt="{{ restaurant.name }}" style="height: 200px; object-fit: contain;">
+          <div class="add-to-cart-overlay">
+            <button class="btn btn-primary" [routerLink]="['/restaurants/', restaurant._id]">
+              More Details
+            </button>
+          </div>
+        </div>
+
+        <!-- restaurant Details -->
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">{{ restaurant.name }}</h5>
+          <p class="card-text text-muted mb-3">{{ restaurant.desc }}</p>
+          <p class="card-text text-muted mb-3">Phone : {{ restaurant.phone }}</p>
+          <p class="card-text text-muted mb-3">Address : {{ restaurant.address }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pagination -->
+  <nav *ngIf="totalPages > 1" class="mt-5">
+    <ul class="pagination justify-content-center">
+      <li class="page-item" [class.disabled]="currentPage === 1">
+        <a class="page-link" (click)="goToPage(currentPage - 1)" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+        </a>
+      </li>
+
+      <li class="page-item" *ngFor="let page of [].constructor(totalPages); let i = index"
+        [class.active]="currentPage === i + 1">
+        <a class="page-link" (click)="goToPage(i + 1)">{{ i + 1 }}</a>
+      </li>
+
+      <li class="page-item" [class.disabled]="currentPage === totalPages">
+        <a class="page-link" (click)="goToPage(currentPage + 1)" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>
