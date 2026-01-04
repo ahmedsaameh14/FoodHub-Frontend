@@ -27,16 +27,17 @@ export class RestaurantService {
     return this._http.get<IRestaurantRelatedRes>(this.URL + '/related' + id)
   }
 
+  // Removed HEADERS to use Interceptor
   addRestaurant(data:IRestaurant): Observable<IRestaurant>{
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders({
-      Authorization: `Bearer ${token}`
-    });
-    return this._http.post<IRestaurant>(this.URL , data , {headers})
+    return this._http.post<IRestaurant>(this.URL , data )
   }
 
   updateRestaurant(id: string , formData: FormData){
     return this._http.put(`${this.URL}${id}` , formData);
+  }
+
+  removeRestaurant(id: string){
+    return this._http.delete(`${this.URL}${id}`)
   }
 
   getCategories(): Observable<{ message: string; data: { _id: string, name: string }[] }> {
