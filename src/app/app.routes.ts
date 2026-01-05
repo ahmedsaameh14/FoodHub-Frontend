@@ -11,6 +11,9 @@ import { RestaurantFormComponent } from './Dashboard/restaurants/restaurant-form
 import { ItemFormComponent } from './Dashboard/restaurants/restaurant-form/item-form/item-form.component';
 import { ListRestaurantsComponent } from './User Layout/list-restaurants/list-restaurants.component';
 import { RestaurantComponent } from './User Layout/list-restaurants/restaurant/restaurant.component';
+import { ItemsComponent } from './Dashboard/items/items.component';
+import { UsersComponent } from './Dashboard/users/users.component';
+import { AddAdminComponent } from './Dashboard/add-admin/add-admin.component';
 
 export const routes: Routes = [
 
@@ -32,11 +35,14 @@ export const routes: Routes = [
         {path: 'restaurants' , component: DashboardRestaurant},
         {path: 'addRestaurant/form' , component: RestaurantFormComponent },
         {path: 'addRestaurant/form/:id' , component: RestaurantFormComponent },
+        {path: 'items' , component: ItemsComponent},
         {path: 'addItem/form' , component: ItemFormComponent},
         {path: 'addItem/form/:id' , component: ItemFormComponent},
-        {path: '' , component: dashboardHome},
+        {path: 'users' , component: UsersComponent},
+        {path: 'add-admin' , component: AddAdminComponent},
+        {path: '' , component: dashboardHome },
         {path: '**' , redirectTo: 'dashboard/home'}
     ]},
 
-    {path: '**' , redirectTo: 'home'}
+    // {path: '**' , redirectTo: 'home'}
 ];

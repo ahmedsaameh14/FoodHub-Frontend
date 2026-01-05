@@ -4,7 +4,7 @@ export interface IItem {
   desc: string;
   img: string;
   price: number;
-  restuarantId: string;
+  restuarantId: string; 
 }
 
 export interface IItemsRes {
