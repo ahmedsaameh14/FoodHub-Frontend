@@ -1,1 +1,68 @@
-<p>restaurant-form works!</p>
+<h4 class="mb-3">
+  {{ isEditMode ? 'Edit Restaurant' : 'Add Restaurant' }}
+</h4>
+
+<form [formGroup]="form" (ngSubmit)="submit()">
+
+  <div class="row g-3">
+
+    <div class="col-md-6">
+      <label>Name</label>
+      <input class="form-control" formControlName="name">
+    </div>
+
+    <div class="col-md-6">
+      <label>Phone</label>
+      <input class="form-control" formControlName="phone">
+    </div>
+
+    <div class="col-md-12">
+      <label>Description</label>
+      <textarea class="form-control" formControlName="desc"></textarea>
+    </div>
+
+    <div class="col-md-6">
+      <label>Address</label>
+      <input class="form-control" formControlName="address">
+    </div>
+
+    <div class="col-md-6">
+      <label>Image</label>
+      <input type="file" class="form-control" (change)="onFileChange($event)">
+    </div>
+
+    <div class="col-md-6">
+      <label>Category</label>
+      <select class="form-select" formControlName="category">
+        <option value="">Select Category</option>
+        <option *ngFor="let c of categories" [value]="c._id">
+          {{ c.name }}
+        </option>
+      </select>
+    </div>
+
+    <div class="col-md-6">
+      <label>Add New Category</label>
+      <div class="input-group">
+        <input class="form-control" formControlName="newCategory">
+        <button type="button"
+                class="btn btn-outline-secondary"
+                (click)="addCategory()">
+          Add
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="mt-4">
+    <button class="btn btn-success me-2" type="submit">
+      {{ isEditMode ? 'Update Restaurant' : 'Add Restaurant' }}
+    </button>
+
+    <button class="btn btn-secondary" type="button" (click)="back()">
+      Cancel
+    </button>
+  </div>
+
+</form>
