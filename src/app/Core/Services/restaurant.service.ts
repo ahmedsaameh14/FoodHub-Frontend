@@ -39,11 +39,11 @@ export class RestaurantService {
   }
 
   updateRestaurant(id: string, formData: FormData) {
-    return this._http.put(`${this.URL}${id}`, formData);
+    return this._http.put(`${this.URL}/${id}`, formData);
   }
 
   removeRestaurant(id: string) {
-    return this._http.delete(`${this.URL}${id}`);
+    return this._http.delete(`${this.URL}/${id}`);
   }
 
   getCategories(): Observable<{

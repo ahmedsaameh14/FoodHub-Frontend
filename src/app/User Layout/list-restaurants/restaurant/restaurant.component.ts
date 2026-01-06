@@ -25,7 +25,7 @@ export class RestaurantComponent implements OnInit {
 
   getItems(page: number=1){
     this.restaurantId = this._route.snapshot.paramMap.get('id')!;
-    this._itemS.getItems(this.restaurantId , page).subscribe((res) =>{
+    this._itemS.getItemsByRestaurant(this.restaurantId).subscribe((res) =>{
       this.items = res.data;
       this.currentPage = res.page;
       this.totalPages = res.totalPages;
@@ -33,8 +33,4 @@ export class RestaurantComponent implements OnInit {
     })
   }
 
-  goToPage(page: number){
-    if (page < 1 || page > this.totalPages) return ;
-    this.getItems(page)
-  }
 }

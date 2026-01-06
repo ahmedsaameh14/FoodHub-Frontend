@@ -1,38 +1,34 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { RestaurantService } from './restaurant.service';
-import { SignService } from './sign.service';
-import { environment } from '../../../environment/environment';
-import { IItem, IItemRes, IItemsRes } from '../Models/item';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../../environment/environment';
+import { IItem, IItemsRes, IItemRes } from '../Models/item';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
 export class ItemService {
 
-  constructor(private _http: HttpClient , private _restS: RestaurantService , private _signS: SignService) { }
+  private URL = environment.API_URL + '/item';
 
-  URL = environment.API_URL + '/item'
+  constructor(private http: HttpClient) {}
 
-  getItems( restaurantId: string ,page: number = 1 , limit: number = 6){
-    return this._http.get<IItemsRes>(`${this.URL}/restaurant/${restaurantId}?page=${page}&limit=${limit}`)
+  createItem(data: FormData):Observable<IItem> {
+    return this.http.post<IItem>(this.URL , data);
   }
 
-  getItemById(id : string){
-    return this._http.get<IItemRes>(this.URL + id)
+  
+  getItemsByRestaurant(restaurantId: string): Observable<IItemsRes> {
+    return this.http.get<IItemsRes>(`${this.URL}/restaurant/${restaurantId}`);
   }
 
-  addItem(data : IItem): Observable<IItem>{
-    return this._http.post<IItem>(this.URL , data)
+  getItemById(id: string): Observable<IItemRes> {
+    return this.http.get<IItemRes>(`${this.URL}/${id}`);
   }
 
-  updateItem(id: string , formData: FormData){
-    return this._http.put(`${this.URL}${id}`, formData)
+  updateItem(id: string, data: FormData) {
+    return this.http.put(`${this.URL}/${id}`, data);
   }
 
-  removeItem(id: string){
-    return this._http.delete(`${this.URL}${id}`)
+  deleteItem(id: string) {
+    return this.http.delete(`${this.URL}/${id}`);
   }
-
 }

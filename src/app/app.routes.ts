@@ -8,7 +8,7 @@ import { RestaurantsComponent as DashboardRestaurant } from './Dashboard/restaur
 import { ProfileComponent } from './User Layout/profile/profile.component';
 import { DashboardLayoutComponent } from './Dashboard/dashboard-layout/dashboard-layout.component';
 import { RestaurantFormComponent } from './Dashboard/restaurants/restaurant-form/restaurant-form.component';
-import { ItemFormComponent } from './Dashboard/restaurants/restaurant-form/item-form/item-form.component';
+import { ItemFormComponent } from './Dashboard/items/item-form/item-form.component';
 import { ListRestaurantsComponent } from './User Layout/list-restaurants/list-restaurants.component';
 import { RestaurantComponent } from './User Layout/list-restaurants/restaurant/restaurant.component';
 import { ItemsComponent } from './Dashboard/items/items.component';
@@ -36,8 +36,8 @@ export const routes: Routes = [
         {path: 'addRestaurant/form' , component: RestaurantFormComponent },
         {path: 'addRestaurant/form/:id' , component: RestaurantFormComponent },
         {path: 'items' , component: ItemsComponent},
-        {path: 'addItem/form' , component: ItemFormComponent},
-        {path: 'addItem/form/:id' , component: ItemFormComponent},
+        {path: 'items/add/:restaurantId' , component: ItemFormComponent},
+        {path: 'items/edit/:itemId' , component: ItemFormComponent},
         {path: 'users' , component: UsersComponent},
         {path: 'add-admin' , component: AddAdminComponent},
         {path: '' , component: dashboardHome },
