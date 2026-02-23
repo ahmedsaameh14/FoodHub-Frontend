@@ -1,1 +1,64 @@
-<p>add-admin works!</p>
+<div class="container mt-4">
+  <h3 class="mb-4">Create Admin</h3>
+
+  <div class="card shadow-sm p-4">
+
+    <form [formGroup]="adminForm" (ngSubmit)="createAdmin()">
+
+      <!-- Name -->
+      <div class="mb-3">
+        <label class="form-label">Name</label>
+        <input 
+          type="text"
+          class="form-control"
+          formControlName="name">
+
+        <div *ngIf="f['name'].touched && f['name'].invalid" class="text-danger small mt-1">
+          Name must be at least 3 characters.
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input 
+          type="email"
+          class="form-control"
+          formControlName="email">
+
+        <div *ngIf="f['email'].touched && f['email'].invalid" class="text-danger small mt-1">
+          Enter a valid email.
+        </div>
+      </div>
+
+      <!-- Password -->
+      <div class="mb-3">
+        <label class="form-label">Password</label>
+        <input 
+          type="password"
+          class="form-control"
+          formControlName="password">
+
+        <div *ngIf="f['password'].touched && f['password'].invalid" class="text-danger small mt-1">
+          Password must be at least 6 characters.
+        </div>
+      </div>
+
+      <button 
+        type="submit"
+        class="btn btn-dark w-100"
+        [disabled]="isSubmitting">
+
+        <span *ngIf="!isSubmitting">Create Admin</span>
+        <span *ngIf="isSubmitting">Creating...</span>
+
+      </button>
+
+    </form>
+
+    <div *ngIf="message" class="alert alert-info mt-3">
+      Admin Created
+    </div>
+
+  </div>
+</div>

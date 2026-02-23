@@ -93,5 +93,12 @@ deleteUser(id: string) {
   return this._http.delete(`${this.URL}/registration/${id}`);
 }
 
+createAdmin(data: IReg) {
+  return this._http.post(
+    `${this.URL}/registration/createAdmin`,
+    data
+  );
+}
+
 }
 
