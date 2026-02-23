@@ -4,10 +4,13 @@
   <div class="row g-4">
     <div *ngFor="let item of items" class="col-md-4 mb-4">
       <div class="card h-100 item-card shadow-sm">
+
         <!-- item Image with hover effect -->
-        <div class="item-image-container">
-          <img [src]="'http://localhost:3000/uploads/' + item.img" class="card-img-top p-3"
-            alt="{{ item.name }}" style="height: 200px; object-fit: contain;">
+        <div class="item-image-container position-relative">
+
+          <img [src]="'http://localhost:3000/uploads/' + item.img" class="card-img-top p-3" alt="{{ item.name }}"
+            style="height: 200px; object-fit: contain;">
+
           <div class="add-to-cart-overlay">
             <button class="btn btn-primary" (click)="openItem(item)">
               See Item
@@ -16,19 +19,34 @@
         </div>
 
         <!-- item Details -->
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">{{ item.name }}</h5>
-          <p class="card-text text-muted mb-3">Price :<strong> {{ item.price }} LE</strong></p>
+        <div class="card-body">
+
+          <div class="d-flex justify-content-between align-items-start">
+
+            <!-- Left Side (Name + Price) -->
+            <div>
+              <h5 class="card-title mb-2">{{ item.name }}</h5>
+              <p class="card-text text-muted mb-0">
+                Price : <strong>{{ item.price }} LE</strong>
+              </p>
+            </div>
+
+            <!-- ❤️ Favourite Button -->
+            <button class="fav-btn-static" (click)="toggleFav(item._id)">
+              <i [ngClass]="isFavourite(item._id) ? 'fa-solid fa-heart text-danger' : 'fa-regular fa-heart'">
+              </i>
+            </button>
+
+          </div>
+
         </div>
+
       </div>
     </div>
   </div>
 
- 
 </div>
 
-<app-items
-  *ngIf="selectedItem"
-  [item]="selectedItem"
-  (close)="selectedItem = null">
-</app-items>
+<app-items *ngIf="selectedItem" [item]="selectedItem" (close)="selectedItem = null"></app-items>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">

@@ -47,6 +47,19 @@
     color: #0d6efd;
     cursor: pointer;
   }
+
+.fav-btn-static {
+  background: transparent;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.fav-btn-static:hover {
+  transform: scale(1.2);
+}
+
   
   strong{
     color: #000;
