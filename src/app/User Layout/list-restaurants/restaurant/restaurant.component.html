@@ -9,7 +9,7 @@
           <img [src]="'http://localhost:3000/uploads/' + item.img" class="card-img-top p-3"
             alt="{{ item.name }}" style="height: 200px; object-fit: contain;">
           <div class="add-to-cart-overlay">
-            <button class="btn btn-primary" [routerLink]="['/items/', item._id]">
+            <button class="btn btn-primary" (click)="openItem(item)">
               See Item
             </button>
           </div>
@@ -18,8 +18,7 @@
         <!-- item Details -->
         <div class="card-body d-flex flex-column">
           <h5 class="card-title">{{ item.name }}</h5>
-          <p class="card-text text-muted mb-3">{{ item.desc }}</p>
-          <p class="card-text text-muted mb-3">Price : {{ item.price }}</p>
+          <p class="card-text text-muted mb-3">Price :<strong> {{ item.price }} LE</strong></p>
         </div>
       </div>
     </div>
@@ -27,3 +26,9 @@
 
  
 </div>
+
+<app-items
+  *ngIf="selectedItem"
+  [item]="selectedItem"
+  (close)="selectedItem = null">
+</app-items>

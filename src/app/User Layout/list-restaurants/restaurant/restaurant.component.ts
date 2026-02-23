@@ -4,10 +4,11 @@ import { ItemService } from '../../../Core/Services/item.service';
 import { RestaurantService } from '../../../Core/Services/restaurant.service';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { ItemsComponent } from "./items/items.component";
 
 @Component({
   selector: 'app-restaurant',
-  imports: [CommonModule , RouterLink],
+  imports: [CommonModule, RouterLink, ItemsComponent],
   templateUrl: './restaurant.component.html',
   styleUrl: './restaurant.component.css',
 })
@@ -32,5 +33,11 @@ export class RestaurantComponent implements OnInit {
       console.log(this.items)
     })
   }
+
+  selectedItem: IItem | null = null;
+
+openItem(item: IItem) {
+  this.selectedItem = item;
+}
 
 }

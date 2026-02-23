@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { IItem } from '../../../../Core/Models/item';
 
 @Component({
   selector: 'app-items',
@@ -7,5 +8,10 @@ import { Component } from '@angular/core';
   styleUrl: './items.component.css'
 })
 export class ItemsComponent {
+  @Input() item!: IItem;
+  @Output() close = new EventEmitter<void>();
 
+  closeModal() {
+    this.close.emit();
+  }
 }

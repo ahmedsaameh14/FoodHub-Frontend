@@ -1,1 +1,11 @@
-<p>items works!</p>
+<div class="modal-backdrop" (click)="closeModal()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    
+    <img [src]="'http://localhost:3000/uploads/' + item.img" />
+    
+    <h3>{{ item.name }}</h3>
+    <p>{{ item.desc }}</p>
+    <p>Price:<strong> {{ item.price }} LE</strong></p>
+
+  </div>
+</div>
