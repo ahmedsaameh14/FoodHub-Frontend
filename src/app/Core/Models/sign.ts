@@ -1,4 +1,6 @@
 export interface IReg{
+    _id?: string,
+    role?: string,
     name: string,
     email: string,
     password: string,

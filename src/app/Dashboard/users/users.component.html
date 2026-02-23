@@ -1,1 +1,47 @@
-<p>users works!</p>
+<div class="container mt-4">
+  <h2 class="mb-4">All Users</h2>
+
+  <!-- Header Row -->
+  <div class="row fw-bold border-bottom pb-2 d-none d-md-flex">
+    <div class="col-md-3">Name</div>
+    <div class="col-md-4">Email</div>
+    <div class="col-md-2">Role</div>
+    <div class="col-md-3 text-end">Action</div>
+  </div>
+
+  <!-- Users Rows -->
+  <div 
+    class="row align-items-center py-3 border-bottom hover-row"
+    *ngFor="let user of users">
+
+    <div class="col-md-3 fw-semibold">
+      {{ user.name }}
+    </div>
+
+    <div class="col-md-4 text-muted">
+      {{ user.email }}
+    </div>
+
+    <div class="col-md-2">
+      <span 
+        class="badge"
+        [ngClass]="user.role === 'admin' ? 'bg-success' : 'bg-secondary'">
+        {{ user.role }}
+      </span>
+    </div>
+
+    <div class="col-md-3 text-md-end mt-2 mt-md-0">
+      <button 
+        class="btn btn-sm btn-outline-danger"
+        (click)="deleteUser(user._id)">
+        Delete
+      </button>
+    </div>
+
+  </div>
+
+  <!-- Empty State -->
+  <div *ngIf="users.length === 0" class="alert alert-info mt-4">
+    No users found.
+  </div>
+</div>

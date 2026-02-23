@@ -81,7 +81,17 @@ export class SignService {
     }
   }
 
+  // Get All Users (Admin Only)
+getAllUsers(): Observable<{ message: string; data: IReg[] }> {
+  return this._http.get<{ message: string; data: IReg[] }>(
+    `${this.URL}/registration`
+  );
+}
 
+// Delete User
+deleteUser(id: string) {
+  return this._http.delete(`${this.URL}/registration/${id}`);
+}
 
 }
 
