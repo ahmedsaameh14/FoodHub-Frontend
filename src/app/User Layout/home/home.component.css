@@ -1,0 +1,119 @@
+/* Color Palette */
+:host {
+  --blue-primary: #3498db;
+  --blue-hover: #2980b9;
+  --blue-soft: #ebf5fb;
+  --text-dark: #2c3e50;
+  --bg-light: #f4f7f6;
+}
+
+/* 🟢 Fade-in Page Load */
+.fade-in-wrapper {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* 🟢 Hero Section (Higher Cover) */
+.hero-container {
+  min-height: 100vh; /* Takes full screen height */
+  position: relative;
+  background: url('https://images.unsplash.com/photo-1552566626-52f8b828add9?q=80&w=2070') center/cover no-repeat;
+}
+
+.hero-blur-bg {
+  position: absolute;
+  inset: 0;
+  background: rgba(44, 62, 80, 0.6); /* Dark Blueish Overlay */
+  backdrop-filter: blur(4px);
+}
+
+.btn-primary-custom {
+  background-color: var(--blue-primary);
+  border: none;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.btn-primary-custom:hover {
+  background-color: var(--blue-hover);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(52, 152, 219, 0.3);
+}
+
+.btn-outline-primary-blue {
+  border: 2px solid var(--blue-primary);
+  color: var(--blue-primary);
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.btn-outline-primary-blue:hover {
+  background-color: var(--blue-primary);
+  color: white;
+}
+
+/* 🟢 Typography & Accents */
+.text-primary-blue { color: var(--blue-primary); }
+.bg-light-alt { background-color: var(--bg-light); }
+.bg-soft-blue { background-color: var(--blue-soft); }
+
+.underline-accent {
+  width: 60px;
+  height: 4px;
+  background: var(--blue-primary);
+  border-radius: 2px;
+}
+
+/* 🟢 Restaurant Cards */
+.slider-wrapper {
+  scrollbar-width: none;
+}
+.slider-wrapper::-webkit-scrollbar { display: none; }
+
+.restaurant-card {
+  min-width: 280px;
+  border: 1px solid #eee;
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+
+.restaurant-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.1) !important;
+}
+
+.card-img-box {
+  height: 200px;
+  overflow: hidden;
+  border-radius: 16px 16px 0 0;
+}
+
+.card-img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 🟢 Contact Form Styling */
+.form-control-custom {
+  width: 100%;
+  padding: 12px 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  background: #fdfdfd;
+  outline: none;
+  transition: 0.3s;
+}
+
+.form-control-custom:focus {
+  border-color: var(--blue-primary);
+  box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.1);
+}
+
+.contact-card {
+  border: none;
+}

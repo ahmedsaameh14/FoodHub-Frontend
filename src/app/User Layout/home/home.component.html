@@ -1,1 +1,88 @@
-<p>home works!</p>
+<div class="fade-in-wrapper">
+  <header class="hero-container d-flex align-items-center justify-content-center text-center text-white">
+    <div class="hero-blur-bg"></div>
+    <div class="container position-relative">
+      <h1 class="display-2 fw-bold mb-3">Hungry? We’ve got you covered.</h1>
+      <p class="fs-4 mb-5 opacity-75">Discover the best meals from top-rated restaurants in one place.</p>
+      <button (click)="scrollToRestaurants()" class="btn btn-primary-custom btn-lg px-5 py-3 shadow-lg rounded-pill">
+        Check Our Restaurants
+      </button>
+    </div>
+  </header>
+
+  <section class="py-5 bg-light-alt">
+    <div class="container py-5">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-7">
+          <h2 class="fw-bold mb-4 border-start border-4 border-primary-blue ps-3">About <span class="text-primary-blue">FoodHub</span></h2>
+          <p class="lead text-dark mb-4">
+            FoodHub is a smart food guide that brings multiple restaurants together in one place. It allows users to explore different restaurants, browse their menus, and compare meals easily — all without the need to visit each restaurant separately.
+          </p>
+          <p class="text-muted mb-0">
+            The goal of FoodHub is to simplify the ordering decision process by providing a clear, organized view of available options in one convenient platform. Whether you’re looking for a quick bite or a full meal, FoodHub helps you choose faster and smarter.
+          </p>
+        </div>
+        <div class="col-lg-5 text-center">
+          <div class="logo-placeholder shadow-sm d-flex align-items-center justify-content-center bg-white rounded-4">
+             <img src="images/foodhub_logo.jpeg" alt="FoodHub" class="img-fluid p-4">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="restaurants-section" class="py-5 bg-white">
+  <div class="container py-5">
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mb-5">
+      <h2 class="fw-bold m-0">Our Restaurants</h2>
+      <a routerLink="/restaurants" class="btn btn-outline-primary-blue mt-3 mt-md-0 rounded-pill px-4">
+        Show All Restaurants
+      </a>
+    </div>
+
+    <div class="row g-4">
+      <div *ngFor="let rest of restaurants" class="col-12 col-md-6 col-lg-3">
+        <div class="restaurant-card bg-white shadow-sm rounded-4 h-100" [routerLink]="['/restaurants/', rest._id]">
+          <div class="card-img-box">
+            <img [src]="'http://localhost:3000/uploads/' + rest.img" [alt]="rest.name" class="img-fluid">
+          </div>
+          <div class="p-3 text-center">
+            <h5 class="fw-bold text-dark mb-1 text-truncate">{{ rest.name }}</h5>
+            <span class="badge bg-soft-blue text-primary-blue px-3 mt-2">{{ rest.desc }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <section class="py-5 bg-light-alt border-top">
+    <div class="container py-4">
+      <div class="row justify-content-center">
+        <div class="col-lg-6 text-center mb-5">
+          <h2 class="fw-bold">Contact Us</h2>
+          <div class="underline-accent mx-auto"></div>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+          <form (ngSubmit)="onSubmitContact()" class="contact-card p-5 bg-white shadow-lg rounded-4">
+            <div class="mb-4">
+              <input type="text" class="form-control-custom" placeholder="Full Name" [(ngModel)]="contactData.name" name="name" required>
+            </div>
+            <div class="mb-4">
+              <input type="email" class="form-control-custom" placeholder="Email Address" [(ngModel)]="contactData.email" name="email" required>
+            </div>
+            <div class="mb-4">
+              <input type="tel" class="form-control-custom" placeholder="Phone Number" [(ngModel)]="contactData.phone" name="phone">
+            </div>
+            <div class="mb-4">
+              <textarea class="form-control-custom" rows="4" placeholder="How can we help?" [(ngModel)]="contactData.message" name="message"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary-custom w-100 py-3 rounded-pill fw-bold">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
