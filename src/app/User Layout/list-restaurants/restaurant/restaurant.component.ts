@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { IItem } from '../../../Core/Models/item';
 import { ItemService } from '../../../Core/Services/item.service';
 import { RestaurantService } from '../../../Core/Services/restaurant.service';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ItemsComponent } from "./items/items.component";
 import { FavouriteService } from '../../../Core/Services/favourite.service';
+import { SignService } from '../../../Core/Services/sign.service';
 
 @Component({
   selector: 'app-restaurant',
@@ -19,9 +20,14 @@ export class RestaurantComponent implements OnInit {
   totalPages = 1;
   restaurantId !: string
   favouriteIds: string[] = [];
-item: any;
+  item: any;
   
-  constructor(private _itemS: ItemService , private _restS: RestaurantService , private _route: ActivatedRoute , private _FavS: FavouriteService){}
+  constructor(private _itemS: ItemService ,
+     private _restS: RestaurantService ,
+      private _route: ActivatedRoute ,
+       private _FavS: FavouriteService ,
+        private _SignS: SignService ,
+          private router: Router){}
 
   ngOnInit(){
     this.getItems()
@@ -34,7 +40,6 @@ item: any;
       this.items = res.data;
       this.currentPage = res.page;
       this.totalPages = res.totalPages;
-      console.log(this.items)
     })
   }
 
@@ -46,20 +51,34 @@ openItem(item: IItem) {
 
 
 loadFavourites() {
-    this._FavS.getFavourites().subscribe(res => {
+
+  if (!this._SignS.isLoggedIn()) return;
+
+  this._FavS.getFavourites().subscribe({
+    next: (res) => {
       this.favouriteIds = res.favourites.map((item: any) => item._id);
-    });
-  }
+    },
+    error: (err) => console.log(err)
+  });
+
+}
 
   toggleFav(itemId: string) {
-    this._FavS.toggleFavourite(itemId).subscribe(() => {
-      if (this.favouriteIds.includes(itemId)) {
-        this.favouriteIds = this.favouriteIds.filter(id => id !== itemId);
-      } else {
-        this.favouriteIds.push(itemId);
-      }
-    });
+
+  // 🔐 If NOT logged in → redirect
+  if (!this._SignS.isLoggedIn()) {
+    this.router.navigate(['/login']);
+    return;
   }
+
+  // ✅ If logged in → call API
+  this._FavS.toggleFavourite(itemId).subscribe({
+    next: (res) => {
+      this.favouriteIds = res.favourites;
+    },
+    error: (err) => console.error(err)
+  });
+}
 
   isFavourite(itemId: string): boolean {
     return this.favouriteIds.includes(itemId);
