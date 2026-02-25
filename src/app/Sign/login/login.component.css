@@ -1,10 +1,74 @@
-.login-page {
+/* 🟢 Main Wrapper with Fade-in */
+.login-wrapper {
   height: 100vh;
-  background: linear-gradient(to right, #f0f4ff, #e0e7ff);
+  background-color: #f4f7f6; /* Matching homepage light gray */
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(52, 152, 219, 0.1) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(52, 152, 219, 0.1) 0px, transparent 50%);
   padding: 20px;
+  animation: fadeIn 0.8s ease-out;
 }
 
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* 🟢 Card Styling */
 .login-card {
-  border-radius: 16px;
-  background-color: #fff;
+  max-width: 450px;
+  border: none;
+  border-radius: 24px; /* Softer corners */
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+}
+
+.brand-logo {
+  color: #2c3e50;
+  cursor: pointer;
+}
+
+.text-primary-blue {
+  color: #3498db;
+}
+
+/* 🟢 Input Styling */
+.form-label {
+  color: #576574;
+}
+
+.input-group-text {
+  border-radius: 12px 0 0 12px;
+  border: 1px solid #e0e0e0;
+}
+
+.form-control {
+  border-radius: 0 12px 12px 0;
+  border: 1px solid #e0e0e0;
+  padding: 10px 15px;
+  transition: all 0.3s ease;
+}
+
+.form-control:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.1);
+}
+
+/* 🟢 Button Styling (Matching Header & Home) */
+.btn-primary-custom {
+  background-color: #3498db;
+  border: none;
+  color: white;
+  transition: 0.3s;
+}
+
+.btn-primary-custom:hover {
+  background-color: #2980b9;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px rgba(52, 152, 219, 0.2);
+}
+
+.btn-primary-custom:disabled {
+  background-color: #bdc3c7;
+  transform: none;
 }
