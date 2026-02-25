@@ -19,7 +19,7 @@ export class RestaurantService {
   URL = environment.API_URL + '/restaurant';
   categoryURL = environment.API_URL + '/category';
 
-  getRestaurants(page: number = 1, limit: number = 6) {
+  getRestaurants(page: number = 1, limit: number = 3) {
     return this._http.get<IRestaurantsRes>(`${this.URL}?page=${page}&limit=${limit}`);
   }
 

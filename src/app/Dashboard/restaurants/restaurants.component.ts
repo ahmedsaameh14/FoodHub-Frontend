@@ -14,7 +14,7 @@ export class RestaurantsComponent implements OnInit {
 
   restaurants: IRestaurant[] = [];
   page = 1;
-  limit = 6;
+  limit = 50;
 
   constructor(
     private _restaurantService: RestaurantService,
