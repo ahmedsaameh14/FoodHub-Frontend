@@ -1,11 +1,25 @@
 <div class="modal-backdrop" (click)="closeModal()">
-  <div class="modal-content" (click)="$event.stopPropagation()">
+  <div class="modal-content-custom shadow-2xl" (click)="$event.stopPropagation()">
     
-    <img [src]="'http://localhost:3000/uploads/' + item.img" />
+    <button class="btn-close-modal" (click)="closeModal()">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+
+    <div class="modal-image-wrapper">
+      <img [src]="'http://localhost:3000/uploads/' + item.img" [alt]="item.name" />
+    </div>
     
-    <h3>{{ item.name }}</h3>
-    <p>{{ item.desc }}</p>
-    <p>Price:<strong> {{ item.price }} LE</strong></p>
+    <div class="modal-body-details p-4">
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <h3 class="fw-bold text-dark mb-0">{{ item.name }}</h3>
+        <span class="badge bg-soft-blue text-primary-blue px-3 py-2 rounded-pill">
+          {{ item.price }} LE
+        </span>
+      </div>
+      
+      <p class="text-muted small mb-4 line-height-relaxed">
+        {{ item.desc || 'No description available for this delicious item.' }}
+      </p>
 
   </div>
 </div>
