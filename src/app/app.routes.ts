@@ -17,9 +17,7 @@ import { AddAdminComponent } from './Dashboard/add-admin/add-admin.component';
 
 export const routes: Routes = [
 
-    {path: 'registration' , component: RegistrationComponent},
-    {path: 'login' , component: LoginComponent},
-
+    
     // USER LAYOUT Routes
     {path: '' , component: LayoutComponent , children:[
         {path: 'home' , component: HomeComponent},
@@ -27,6 +25,9 @@ export const routes: Routes = [
         {path: 'restaurants/:id' , component: RestaurantComponent},
         {path: 'profile' , component: ProfileComponent},
         {path:'',redirectTo:'home',pathMatch:'full'},
+        
+        {path: 'registration' , component: RegistrationComponent},
+        {path: 'login' , component: LoginComponent},
     ]},
 
     // ADMIN Routes
