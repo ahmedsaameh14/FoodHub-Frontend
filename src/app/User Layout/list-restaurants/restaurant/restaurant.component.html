@@ -10,7 +10,7 @@
         <div class="card h-100 item-card shadow-sm border-0">
 
           <div class="item-image-container">
-            <img [src]="'http://localhost:3000/uploads/' + item.img" class="card-img-top p-3" alt="{{ item.name }}">
+            <img [src]="item.img" class="card-img-top p-3" alt="{{ item.name }}">
 
             <div class="item-overlay">
               <button class="btn btn-primary-custom btn-sm rounded-pill px-3" (click)="openItem(item)">

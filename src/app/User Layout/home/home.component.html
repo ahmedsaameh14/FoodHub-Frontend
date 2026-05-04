@@ -44,7 +44,7 @@
       <div *ngFor="let rest of restaurants" class="col-12 col-md-6 col-lg-3">
         <div class="restaurant-card bg-white shadow-sm rounded-4 h-100" [routerLink]="['/restaurants/', rest._id]">
           <div class="card-img-box">
-            <img [src]="'http://localhost:3000/uploads/' + rest.img" [alt]="rest.name" class="img-fluid">
+            <img [src]="rest.img" [alt]="rest.name" class="img-fluid">
           </div>
           <div class="p-3 text-center">
             <h5 class="fw-bold text-dark mb-1 text-truncate">{{ rest.name }}</h5>
