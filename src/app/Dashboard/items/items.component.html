@@ -30,7 +30,7 @@
                *ngFor="let item of itemsMap[restaurant._id]">
 
             <div class="d-flex align-items-center gap-2">
-              <img [src]="'http://localhost:3000/uploads/' + item.img"
+              <img [src]="item.img"
                    width="35" height="35"
                    class="rounded">
 
